@@ -82,4 +82,19 @@ public class TeacherServiceImpl implements TeacherService {
         }
         return 0;
     }
+
+    @Override
+    public int insertTeacher(Teacher teacher) {
+        InputStream inputStream = null;
+        try {
+            inputStream= Resources.getResourceAsStream(resource);
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            SqlSession sqlSession = sqlSessionFactory.openSession(true);
+            TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+            return  mapper.insertTeacher(teacher);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

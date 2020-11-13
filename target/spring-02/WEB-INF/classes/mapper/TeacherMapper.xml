@@ -37,4 +37,8 @@
     <delete id="delTeacherById" >
         delete from teacher where t_id = #{id}
     </delete>
+
+    <insert id="insertTeacher" parameterType="teacher">
+        insert into teacher values (#{id},#{teacherName},#{teacherAddr},#{age})
+    </insert>
 </mapper>

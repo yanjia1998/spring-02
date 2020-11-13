@@ -15,4 +15,8 @@ public interface TeacherService {
     int updateTeacher(Teacher teacher);
 
     int delTeacherById(@Param("id")Integer id);
+
+    int insertTeacher(Teacher teacher);
 }
+
+

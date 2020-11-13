@@ -16,10 +16,10 @@
     <div>
         <form action="update" method="post">
             <input type="hidden" name="id" value="${teacher.id}" ><br>
-            <input name="teacherName" value="${teacher.teacherName}"><br>
-            <input name="teacherAddr" value="${teacher.teacherAddr}"><br>
-            <input name="age" value="${teacher.age}"><br>
-            <input type="submit" value="修改提交">
+            教师姓名: <input name="teacherName" value="${teacher.teacherName}"><br>
+            教师住址: <input name="teacherAddr" value="${teacher.teacherAddr}"><br>
+            教师年龄: <input name="age" value="${teacher.age}"><br>
+            <button type="submit" class="btn btn-success">修改提交</button>
         </form>
     </div>
 

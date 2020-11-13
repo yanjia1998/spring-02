@@ -18,6 +18,12 @@
     <div>
         <table  class="table table-bordered  table table-striped" style="width: 800px" align="center">
             <tr>
+                <td colspan="5" align="center">
+                    <a href="selectByIdInsert.jsp"><button type="button" class="btn btn-success" >新增教师</button></a>
+
+                </td>
+            </tr>
+            <tr>
                 <th>教师编号</th>
                 <th>教师姓名</th>
                 <th>教师住址</th>
@@ -31,10 +37,11 @@
                     <td>${teacher.teacherAddr}</td>
                     <td>${teacher.age}</td>
                     <td>
-                        <a href="selectById?id=${teacher.id}">修改</a>
-                        <a href="delete?id=${teacher.id}">删除</a>
+                        <a href="selectById?id=${teacher.id}"><button type="button" class="btn btn-success">修改</button></a>
+                        <a href="delete?id=${teacher.id}"><button type="button" class="btn btn-success">删除</button></a>
                     </td>
                 </tr>
+
             </c:forEach>
 
         </table>

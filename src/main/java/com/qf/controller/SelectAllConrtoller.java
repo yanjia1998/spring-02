@@ -30,7 +30,7 @@ public class SelectAllConrtoller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer pageNum = req.getParameter("pageNum")!= null ?Integer.valueOf(req.getParameter("pageNum")):1;
-        PageHelper.startPage(pageNum,10);
+        PageHelper.startPage(pageNum,9);
 
         List<Teacher> teachers = teacherService.selectAll();
         PageInfo<Teacher> pageinfo = new PageInfo<Teacher>(teachers);
