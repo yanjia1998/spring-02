@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.TeacherMapper">
+    <resultMap id="BaseResult" type="teacher">
+        <id property="id" column="t_id"></id>
+        <result property="teacherName" column="t_name"></result>
+        <result property="teacherAddr" column="t_addr"></result>
+        <result property="age" column="t_age"></result>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResult">
+        select * from teacher
+    </select>
+
+    <select id="selectById" parameterType="int" resultMap="BaseResult">
+        select * from  teacher where t_id = #{id}
+    </select>
+
+    <update id="updateTeacher" parameterType="teacher" >
+        update teacher
+        <set>
+            <if test="teacherName!= null">
+                t_name = #{teacherName},
+            </if>
+            <if test="teacherAddr!= null">
+                t_addr = #{teacherAddr},
+            </if>
+            <if test="age!= null">
+                t_age = #{age},
+            </if>
+        </set>
+             where t_id = #{id}
+    </update>
+
+    <delete id="delTeacherById" >
+        delete from teacher where t_id = #{id}
+    </delete>
+</mapper>
