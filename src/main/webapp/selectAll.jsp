@@ -16,14 +16,14 @@
 </head>
 <body>
     <div>
-        <table  class="table table-bordered  table table-striped" style="width: 800px" align="center">
-            <tr>
+        <table  class="table table-bordered  table table-striped table-hover" style="width: 800px" align="center">
+            <tr class="bg-primary">
                 <td colspan="5" align="center">
                     <a href="selectByIdInsert.jsp"><button type="button" class="btn btn-success" >新增教师</button></a>
 
                 </td>
             </tr>
-            <tr>
+            <tr class="bg-success">
                 <th>教师编号</th>
                 <th>教师姓名</th>
                 <th>教师住址</th>
@@ -31,7 +31,7 @@
                 <th>操作</th>
             </tr>
             <c:forEach var="teacher" items="${teachers}">
-                <tr>
+                <tr class="bg-info">
                     <td>${teacher.id}</td>
                     <td>${teacher.teacherName}</td>
                     <td>${teacher.teacherAddr}</td>
