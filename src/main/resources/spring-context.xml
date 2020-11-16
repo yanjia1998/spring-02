@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
-
-        <bean id="teacherService" class="com.qf.service.impl.TeacherServiceImpl"></bean>
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        <!--scope默认singleton模式   也有多例模式-->
+<!--        <bean id="teacherService" class="com.qf.service.impl.TeacherServiceImpl" scope="singleton"></bean>-->
         <bean id="teacher" class="com.qf.pojo.Teacher"></bean>
+        <bean id="teacher1" class="com.qf.pojo.Teacher">
+                <property name="id" value="1"></property>
+                <property name="age" value="18"></property>
+                <property name="teacherAddr" value="南窑头"></property>
+                <property name="teacherName" value="宝马女"></property>
+        </bean>
+        <bean id="student" class="com.qf.pojo.Student">
+                <property name="id" value="1"></property>
+                <property name="name" value="czz"></property>
+                <property name="sex" value="女"></property>
+                <property name="age" value="18"></property>
+                <property name="birthday" value="2001/01/18"></property>
+                <property name="hobbys">
+                        <array>
+                                <value>画地图</value>
+                                <value>唱歌</value>
+                                <value>跳舞</value>
+                                <value>弹吉他</value>
+                        </array>
+                </property>
+                <property name="phones">
+                        <set>
+                                <value>18799999999</value>
+                                <value>19999999999</value>
+                                <value>19999999999</value>
+                        </set>
+                </property>
+                <property name="girlNames">
+                        <list>
+                                <value>czz</value>
+                                <value>pzz</value>
+                                <value>lzz</value>
+                        </list>
+                </property>
+                <property name="countries">
+                        <map>
+                                <entry key="cn" value="China"></entry>
+                                <entry key="us" value="US"></entry>
+                                <entry key="uk" value="UK"></entry>
+                        </map>
+                </property>
+                <property name="files">
+                        <props>
+                                <prop key="first">One</prop>
+                                <prop key="second">Two</prop>
+                                <prop key="third">Three</prop>
+                        </props>
+                </property>
+                <property name="teacher" ref="teacher1"></property>
+        </bean>
+        <context:component-scan base-package="com.qf"></context:component-scan>
 
 </beans>

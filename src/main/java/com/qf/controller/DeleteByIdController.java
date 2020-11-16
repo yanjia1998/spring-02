@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/delete")
 public class DeleteByIdController extends HttpServlet {
@@ -30,5 +31,8 @@ public class DeleteByIdController extends HttpServlet {
         if(i > 0){
             resp.sendRedirect("selectAll");
         }
+
+//        PrintWriter writer = resp.getWriter();
+//        writer.write();
     }
 }

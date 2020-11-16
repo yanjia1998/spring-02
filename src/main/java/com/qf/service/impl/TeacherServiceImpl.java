@@ -8,11 +8,12 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-
+@Component(value = "teacherService")
 public class TeacherServiceImpl implements TeacherService {
     static SqlSessionFactory sqlSessionFactory = null;
     static String resource = "mybatis-config.xml";
@@ -28,7 +29,9 @@ public class TeacherServiceImpl implements TeacherService {
             TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
             ;
 //            PageInfo<Teacher> pageInfo = new PageInfo<>()
-            return  mapper.selectAll();
+            List<Teacher> teachers = mapper.selectAll();
+            sqlSession.close();
+            return teachers;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,7 +46,9 @@ public class TeacherServiceImpl implements TeacherService {
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             SqlSession sqlSession = sqlSessionFactory.openSession();
             TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
-            return mapper.selectById(id);
+            Teacher teacher = mapper.selectById(id);
+            sqlSession.close();
+            return teacher;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,7 +64,9 @@ public class TeacherServiceImpl implements TeacherService {
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             SqlSession sqlSession = sqlSessionFactory.openSession(true);
             TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
-            return   mapper.updateTeacher(teacher);
+            int i = mapper.updateTeacher(teacher);
+            sqlSession.close();
+            return i;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,7 +82,9 @@ public class TeacherServiceImpl implements TeacherService {
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             SqlSession sqlSession = sqlSessionFactory.openSession(true);
             TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
-            return mapper.delTeacherById(id);
+            int i = mapper.delTeacherById(id);
+            sqlSession.close();
+            return i;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -91,7 +100,9 @@ public class TeacherServiceImpl implements TeacherService {
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             SqlSession sqlSession = sqlSessionFactory.openSession(true);
             TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
-            return  mapper.insertTeacher(teacher);
+            int i = mapper.insertTeacher(teacher);
+            sqlSession.close();
+            return i;
         } catch (IOException e) {
             e.printStackTrace();
         }

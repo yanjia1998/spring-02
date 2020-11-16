@@ -18,7 +18,6 @@ public class InsertTeacherController extends HttpServlet {
     static ClassPathXmlApplicationContext cpx = new ClassPathXmlApplicationContext("spring-context.xml");
     @Override
     public void init(ServletConfig config) throws ServletException {
-
         teacherService = (TeacherService)cpx.getBean("teacherService");
     }
 
